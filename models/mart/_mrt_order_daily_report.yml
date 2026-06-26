@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: mrt_order_daily_report
+    description: This mart provides a daily summary of order performance by state and account manager.
+      It is designed to support operational reporting and business performance analysis.
+
+    columns:
+      - name: order_date
+        description: Date when the orders were created
+
+      - name: state
+        description: State where the customer is located
+
+      - name: account_manager
+        description: Account manager responsible for the customer or region
+
+      - name: total_orders
+        description: Total number of orders placed on the given date
+
+      - name: average_item_per_order
+        description: Average number of items purchased per order
+
+      - name: average_feedback_score
+        description: Average customer feedback score for the orders
+
+      - name: average_amount_spent_per_order
+        description: Average amount spent per order, including product and shipping costs
+

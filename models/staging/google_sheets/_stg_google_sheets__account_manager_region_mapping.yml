@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_google_sheets__account_manager_region_mapping
+    description: This model contains the mapping between customer states and their assigned account managers
+
+    columns:
+      - name: state
+        description: Name of the customer's state
+      
+      - name: account_manager
+        description: Name of the account manager assigned to the state

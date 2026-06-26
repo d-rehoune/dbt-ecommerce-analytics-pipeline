@@ -1,0 +1,165 @@
+version: 2
+
+models:
+  - name: stg_sales_database__order
+    description: This model contains information about orders
+
+    columns:
+      - name: order_id
+        description: This is a unique indentifier for the order
+
+      - name: user_id 
+        description: Unique identifier for the customer who placed the order
+      
+      - name: order_status 
+        description: Current status of the order 
+      
+      - name: order_created_at 
+        description: Timestamp when the order was created 
+        
+      - name: order_approved_at 
+        description: Timestamp when the order payment was approved 
+      
+      - name: picked_up_at 
+        description: Timestamp when the order was picked up by the carrier
+    
+      - name: delivered_at 
+        description: Timestamp when the order was delivered to the customer 
+      
+      - name: estimated_delivery_at 
+        description: Estimated timestamp for the order delivery
+  
+  - name: stg_sales_database__order_item
+    description: This model contains order items from the sales database. Each record represents a product purchased within an order
+
+    columns:
+      - name: order_item_id
+        description: Unique identifier for the order item
+
+      - name: order_id
+        description: Unique identifier for the order
+
+      - name: product_id
+        description: Unique identifier for the product
+
+      - name: seller_id
+        description: Unique identifier for the seller
+
+      - name: unit_price 
+        description: Unit price of the product
+      
+      - name: shipping_cost 
+        description: Shipping cost associated with the order item 
+      
+      - name: item_quantity 
+        description: Quantity of the product purchased 
+        
+      - name: picked_up_limited_at 
+        description: Deadline for the seller to hand over the item to the carrier 
+        
+      - name: total_order_item_amount 
+        description: Total amount for the order item, including the product price and shipping cost
+
+  - name: stg_sales_database__user
+    description: This model contains customers from the sales database
+
+    columns:
+      - name: user_id
+        description: Unique identifier for the customer
+
+      - name: user_zip_code
+        description: ZIP code of the customer's location
+
+      - name: user_city
+        description: City where the customer is located
+
+      - name: user_state
+        description: State where the customer is located
+  
+  - name: stg_sales_database__product
+    description: This model contains products from the sales database
+
+    columns:
+      - name: product_id
+        description: Unique identifier for the product
+
+      - name: product_category
+        description: Category of the product
+
+      - name: product_name_lenght
+        description: Length of the product name in characters
+
+      - name: product_description_lenght
+        description: Length of the product description in characters
+
+      - name: product_photos_qty
+        description: Number of photos available for the product
+
+      - name: product_weight_g
+        description: Weight of the product in grams
+
+      - name: product_length_cm
+        description: Length of the product in centimeters
+
+      - name: product_height_cm
+        description: Height of the product in centimeters
+
+      - name: product_width_cm
+        description: Width of the product in centimeters
+
+  - name: stg_sales_database__seller
+    description: This model contains sellers from the sales database
+
+    columns:
+      - name: seller_id
+        description: Unique identifier for the seller
+
+      - name: seller_zip_code
+        description: ZIP code of the seller's location
+
+      - name: seller_city
+        description: City where the seller is located
+
+      - name: seller_state
+        description: State where the seller is located
+  
+  - name: stg_sales_database__payment
+    description: This model contains payment records for customer orders
+
+    columns:
+      - name: payment_id
+        description: Unique identifier for the payment
+
+      - name: order_id
+        description: Unique identifier for the order
+
+      - name: payment_sequential
+        description: Sequential number of the payment for the order
+
+      - name: payment_type
+        description: Method used to pay for the order
+
+      - name: payment_installments
+        description: Number of payment installments
+
+      - name: payment_value
+        description: Amount paid
+ 
+  - name: stg_sales_database__feedback
+    description: This model contains customer feedback for completed orders
+
+    columns:
+      - name: feedback_id
+        description: Unique identifier for the feedback
+
+      - name: order_id
+        description: Unique identifier for the order
+
+      - name: feedback_score
+        description: Customer satisfaction score
+
+      - name: feedback_form_sent_at
+        description: Timestamp when the feedback request was sent
+
+      - name: feedback_answered_at
+        description: Timestamp when the customer submitted the feedback
