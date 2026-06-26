@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: int_google_analytics__session
+    description: This model aggregates Google Analytics events at the session level
+
+    columns:
+      - name: unique_session_id
+        description: Unique identifier for the session, generated from the user identifier and the Google Analytics session identifier
+
+      - name: user_pseudo_id
+        description: Anonymous identifier assigned to the user
+
+      - name: ga_session_id
+        description: Google Analytics session identifier
+
+      - name: session_start_time
+        description: Timestamp when the session started
+
+      - name: session_end_time
+        description: Timestamp when the session ended
+
+      - name: session_duration_seconds
+        description: Duration of the session in seconds
+
+      - name: pages_viewed
+        description: Total number of page view events recorded during the session
+
+      - name: event_count
+        description: Total number of events recorded during the session
+
+      - name: browser_used
+        description: Browser used during the session
+
+      - name: traffic_source
+        description: Traffic source that generated the session
+
+      - name: traffic_name
+        description: Campaign name associated with the session traffic source
+

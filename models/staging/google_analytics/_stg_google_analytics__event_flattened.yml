@@ -1,0 +1,37 @@
+models:
+  - name: _stg_google_analytics__event_flattened
+    description: This model contains Google Analytics 4 events with selected nested fields flattened for downstream analytics
+
+    columns:
+      - name: event_date
+        description: Date when the event occurred
+
+      - name: event_timestamp
+        description: Timestamp when the event occurred
+
+      - name: event_name
+        description: Name of the tracked event
+
+      - name: user_pseudo_id
+        description: Anonymous identifier assigned to the user
+
+      - name: user_first_touch_timestamp
+        description: Timestamp of the user's first recorded interaction
+
+      - name: browser
+        description: Browser used by the user
+
+      - name: source
+        description: Traffic source of the session
+
+      - name: name
+        description: Traffic source campaign name
+
+      - name: ga_session_id
+        description: Google Analytics session identifier
+
+      - name: page_title
+        description: Title of the visited page
+
+      - name: page_location
+        description: URL of the visited page
