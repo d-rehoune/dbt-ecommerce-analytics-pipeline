@@ -16,17 +16,17 @@ GROUP BY user_pseudo_id, ga_session_id
 )
 
 SELECT 
-  CONCAT(user_pseudo_id, '_', ga_session_id) AS unique_session_id,
+  unique_session_id,
   user_pseudo_id,
   ga_session_id,
   session_start_time,
   session_end_time,
-  TIMESTAMP_DIFF(session_end_time, session_start_time, second) AS session_duration_seconds,
   pages_viewed,
   event_count,
   browser_used,
   traffic_source,
-  traffic_name
+  traffic_name,
+  TIMESTAMP_DIFF(session_end_time, session_start_time, SECOND) AS session_duration_seconds
 FROM aggregated_session_date 
 
 

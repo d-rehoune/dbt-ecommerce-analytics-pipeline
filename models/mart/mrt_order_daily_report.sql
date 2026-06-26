@@ -1,8 +1,8 @@
 WITH
   agregated_order AS (
     SELECT
-      DATE(order_created_at) AS order_date,
       user_state AS state,
+      DATE(order_created_at) AS order_date,
       COUNT(DISTINCT order_id) AS total_orders,
       AVG(total_items) AS average_item_per_order,
       AVG(average_feedback_score) AS average_feedback_score,
