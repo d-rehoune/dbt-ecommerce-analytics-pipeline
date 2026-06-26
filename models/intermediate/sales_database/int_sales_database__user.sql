@@ -2,14 +2,14 @@ WITH
   orders_summary AS (
     SELECT
       o.user_id,
-      SUM(total_order_item_amount) AS total_amount_spent,
+      SUM(oi.total_order_item_amount) AS total_amount_spent,
       SUM(oi.item_quantity) AS total_items,
-      COUNT(DISTINCT product_id) AS total_distinct_items,
+      COUNT(DISTINCT oi.product_id) AS total_distinct_items,
       COUNT(DISTINCT o.order_id) AS total_orders
     FROM
-      {{ref('stg_sales_database__order_item')}} oi
+      {{ ref('stg_sales_database__order_item') }} AS oi
     INNER JOIN
-      {{ ref('stg_sales_database__order') }} o
+      {{ ref('stg_sales_database__order') }} AS o
       ON oi.order_id = o.order_id
     GROUP BY
       o.user_id
@@ -21,12 +21,12 @@ WITH
       ROW_NUMBER()
         OVER (
           PARTITION BY o.user_id
-          ORDER BY SUM(item_quantity) DESC
+          ORDER BY SUM(oi.item_quantity) DESC
         ) AS rn
     FROM
-      {{ref('stg_sales_database__order_item')}} oi
+      {{ ref('stg_sales_database__order_item') }} AS oi
     INNER JOIN
-      {{ref('stg_sales_database__order')}} o
+      {{ ref('stg_sales_database__order') }} AS o
       ON oi.order_id = o.order_id
     GROUP BY
       o.user_id,
@@ -41,12 +41,12 @@ SELECT
   o.total_distinct_items,
   o.total_orders,
   p.product_id AS favorite_product_id
-FROM {{ ref('stg_sales_database__user') }} u
+FROM {{ ref('stg_sales_database__user') }} AS u
 LEFT JOIN 
-  orders_summary o
+  orders_summary AS o
   ON u.user_id = o.user_id
 LEFT JOIN
-  product_summary p
+  product_summary AS p
   ON
     o.user_id = p.user_id
     AND p.rn = 1

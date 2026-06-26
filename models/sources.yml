@@ -21,3 +21,4 @@ sources:
     schema: google_analytics_4
     tables:
       - name: events_20210131
+  

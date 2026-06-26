@@ -11,7 +11,7 @@ WITH
   feedback_grouped_by_order AS (
     SELECT
       order_id,
-      avg(feedback_score) AS average_feedback_score
+      AVG(feedback_score) AS average_feedback_score
     FROM {{ ref('stg_sales_database__feedback') }}
     GROUP BY order_id
   )
@@ -31,6 +31,6 @@ FROM {{ ref('stg_sales_database__order') }} AS o
 LEFT JOIN order_item_grouped_by_order AS oi
   ON o.order_id = oi.order_id
 LEFT JOIN feedback_grouped_by_order AS f
-  ON f.order_id = o.order_id
+  ON o.order_id = f.order_id
 LEFT JOIN {{ ref('stg_sales_database__user') }} AS u
-  ON u.user_id = o.user_id
+  ON o.user_id = u.user_id
