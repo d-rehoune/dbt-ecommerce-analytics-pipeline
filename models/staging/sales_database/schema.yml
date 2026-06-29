@@ -6,10 +6,13 @@ models:
 
     columns:
       - name: order_id
-        description: This is a unique indentifier for the order
+        description: Primary key, This is a unique indentifier for the order
+        tests:
+          - unique
+          - not_null
 
       - name: user_id 
-        description: Unique identifier for the customer who placed the order
+        description: Foreign key, Unique identifier for the customer who placed the order
       
       - name: order_status 
         description: Current status of the order 
@@ -34,10 +37,13 @@ models:
 
     columns:
       - name: order_item_id
-        description: Unique identifier for the order item
+        description: Primary key, Unique identifier for the order item
+        tests:
+          - unique
+          - not_null
 
       - name: order_id
-        description: Unique identifier for the order
+        description: Foreign key, Unique identifier for the order
 
       - name: product_id
         description: Unique identifier for the product
@@ -58,14 +64,17 @@ models:
         description: Deadline for the seller to hand over the item to the carrier 
         
       - name: total_order_item_amount 
-        description: Total amount for the order item, including the product price and shipping cost
+        description: Total amount for the order item, including the product price and shipping cost, calculated as (price * quantity) + shipping_cost
 
   - name: stg_sales_database__user
     description: This model contains customers from the sales database
 
     columns:
-      - name: user_id
+      - name: Primary key, user_id
         description: Unique identifier for the customer
+        tests:
+          - unique
+          - not_null
 
       - name: user_zip_code
         description: ZIP code of the customer's location
@@ -81,7 +90,10 @@ models:
 
     columns:
       - name: product_id
-        description: Unique identifier for the product
+        description: Primary key, Unique identifier for the product
+        tests:
+          - unique
+          - not_null
 
       - name: product_category
         description: Category of the product
@@ -112,7 +124,10 @@ models:
 
     columns:
       - name: seller_id
-        description: Unique identifier for the seller
+        description: Primary key, Unique identifier for the seller
+        tests:
+          - unique
+          - not_null
 
       - name: seller_zip_code
         description: ZIP code of the seller's location
@@ -129,6 +144,9 @@ models:
     columns:
       - name: payment_id
         description: Unique identifier for the payment
+        tests:
+          - unique
+          - not_null
 
       - name: order_id
         description: Unique identifier for the order
@@ -150,10 +168,13 @@ models:
 
     columns:
       - name: feedback_id
-        description: Unique identifier for the feedback
+        description: Primary key, Unique identifier for the feedback
+        tests:
+          - unique
+          - not_null
 
       - name: order_id
-        description: Unique identifier for the order
+        description: Foreign key, Unique identifier for the order
 
       - name: feedback_score
         description: Customer satisfaction score

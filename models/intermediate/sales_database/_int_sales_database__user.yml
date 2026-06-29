@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: int_sales_database__user
+    description: '{{ doc("int_sales_database__user") }}'
+    columns:
+      - name: user_id
+        description: "Primary key, unique identifier for each user."
+        tests:
+          - unique
+          - not_null
+      
+      - name: user_city 
+        description: City where the customer is located 
+      
+      - name: user_state 
+        description: State where the customer is located 
+      
+      - name: total_amount_spent 
+        description: Total amount spent by the customer across all orders 
+      
+      - name: total_items 
+        description: Total number of items purchased by the customer 
+      
+      - name: total_distinct_items 
+        description: Total number of distinct products purchased by the customer 
+      
+      - name: total_orders 
+        description: Total number of orders placed by the customer 
+      
+      - name: favorite_product_id 
+        description: Identifier of the product most frequently purchased by the customer
