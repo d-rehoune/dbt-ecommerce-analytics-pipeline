@@ -1,5 +1,5 @@
 models:
-  - name: _stg_google_analytics__event_flattened
+  - name: stg_google_analytics__event_flattened
     description: This model contains Google Analytics 4 events with selected nested fields flattened for downstream analytics
 
     columns:
