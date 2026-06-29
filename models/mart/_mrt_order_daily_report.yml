@@ -2,8 +2,7 @@ version: 2
 
 models:
   - name: mrt_order_daily_report
-    description: This mart provides a daily summary of order performance by state and account manager.
-      It is designed to support operational reporting and business performance analysis.
+    description: '{{ doc("mrt_order_daily_report") }}'
 
     columns:
       - name: order_date

@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: int_sales_database__order
+    description: '{{ doc("int_sales_database__order") }}'
+    columns:
+      - name: order_id
+        description: "Primary key, unique identifier for each order."
+        tests:
+          - unique
+          - not_null
+          
+      - name: user_id 
+        description: Unique identifier for the customer 
+      
+      - name: order_status 
+        description: Current status of the order 
+        
+      - name: order_created_at 
+        description: Timestamp when the order was created 
+        
+      - name: order_approved_at 
+        description: Timestamp when the payment was approved 
+      
+      - name: user_city 
+        description: City where the customer is located 
+      
+      - name: user_state 
+        description: State where the customer is located 
+      
+      - name: average_feedback_score 
+        description: Average customer feedback score for the order 
+      
+      - name: total_order_amount 
+        description: Total amount of the order, including product and shipping costs 
+      
+      - name: total_items 
+        description: Total number of items purchased in the order 
+      
+      - name: total_distinct_items 
+        description: Number of distinct products included in the order

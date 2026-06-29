@@ -2,11 +2,14 @@ version: 2
 
 models:
   - name: int_google_analytics__session
-    description: This model aggregates Google Analytics events at the session level
+    description: '{{ doc("int_google_analytics__session") }}'
 
     columns:
       - name: unique_session_id
-        description: Unique identifier for the session, generated from the user identifier and the Google Analytics session identifier
+        description: Primary key, Unique identifier for the session, generated from the user identifier and the Google Analytics session identifier
+        tests:
+          - unique
+          - not_null
 
       - name: user_pseudo_id
         description: Anonymous identifier assigned to the user
