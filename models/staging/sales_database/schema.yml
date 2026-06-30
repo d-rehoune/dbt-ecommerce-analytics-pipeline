@@ -70,8 +70,8 @@ models:
     description: This model contains customers from the sales database
 
     columns:
-      - name: Primary key, user_id
-        description: Unique identifier for the customer
+      - name: user_id
+        description: Primary key, Unique identifier for the customer
         tests:
           - unique
           - not_null
