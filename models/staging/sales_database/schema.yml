@@ -13,9 +13,28 @@ models:
 
       - name: user_id 
         description: Foreign key, Unique identifier for the customer who placed the order
+        tests:
+          - relationships:
+              name: user_id_foreing_key_in_stg_sales_database__order
+              arguments: 
+                to: ref('stg_sales_database__user')
+                field: user_id
       
       - name: order_status 
         description: Current status of the order 
+        tests:
+          - accepted_values:
+              name: accepted_values_order_status
+              arguments:
+                values: 
+                  - created
+                  - shipped
+                  - approved
+                  - canceled
+                  - invoiced
+                  - delivered
+                  - processing
+                  - unavailable
       
       - name: order_created_at 
         description: Timestamp when the order was created 
@@ -44,6 +63,12 @@ models:
 
       - name: order_id
         description: Foreign key, Unique identifier for the order
+        tests:
+          - relationships:
+              name: order_id_foreing_key_in_stg_sales_database__order_item
+              arguments: 
+                to: ref('stg_sales_database__order')
+                field: order_id
 
       - name: product_id
         description: Unique identifier for the product
@@ -143,13 +168,19 @@ models:
 
     columns:
       - name: payment_id
-        description: Unique identifier for the payment
+        description: Primary key,  Unique identifier for the payment
         tests:
           - unique
           - not_null
 
       - name: order_id
-        description: Unique identifier for the order
+        description: Foreign key, Unique identifier for the order
+        tests:
+          - relationships:
+              name: order_id_foreing_key_in_stg_sales_database__payment
+              arguments: 
+                to: ref('stg_sales_database__order')
+                field: order_id
 
       - name: payment_sequential
         description: Sequential number of the payment for the order
@@ -175,6 +206,12 @@ models:
 
       - name: order_id
         description: Foreign key, Unique identifier for the order
+        tests:
+          - relationships:
+              name: order_id_foreing_key_in_stg_sales_database__feedback
+              arguments: 
+                to: ref('stg_state_database__order')
+                field: order_id
 
       - name: feedback_score
         description: Customer satisfaction score
