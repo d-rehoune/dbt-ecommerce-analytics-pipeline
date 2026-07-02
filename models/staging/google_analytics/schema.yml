@@ -1,6 +1,9 @@
 models:
   - name: stg_google_analytics__event_flattened
     description: This model contains Google Analytics 4 events with selected nested fields flattened for downstream analytics
+    config: 
+      cluster_by: "event_name"
+      materialized: "table"
 
     columns:
       - name: event_date
