@@ -210,7 +210,7 @@ models:
           - relationships:
               name: order_id_foreing_key_in_stg_sales_database__feedback
               arguments: 
-                to: ref('stg_state_database__order')
+                to: ref('stg_sales_database__order')
                 field: order_id
 
       - name: feedback_score
